@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,18 +14,49 @@ namespace CertificateAgent.Forms
 {
     public partial class frmMain : Form
     {
+        private X509Certificate2 _certificate;
+
         public frmMain()
         {
             InitializeComponent();
         }
 
+        private void PopulateForm(X509Certificate2 certificate)
+        {
+            txtSerialNumber.Text = certificate.GetSerialNumberString();
+            dtpExpirationTime.Value = Convert.ToDateTime(certificate.GetExpirationDateString());
+            txtFriendlyName.Text = certificate.FriendlyName;
+        }
+
         private void btnChooseCertificate_Click(object sender, EventArgs e)
         {
-            var choose = DigitalCertificateAgent.ChooseCertificate();
+            try
+            {
+                _certificate = DigitalCertificateAgent.ChooseCertificate();
+                PopulateForm(_certificate);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+            }
+        }
 
-            txtSerialNumber.Text = choose.GetSerialNumberString();
-            dtpExpirationTime.Value = Convert.ToDateTime(choose.GetExpirationDateString());
-            txtFriendlyName.Text = choose.FriendlyName;
+        private void btnExportToBase64String_Click(object sender, EventArgs e)
+        {
+            if (_certificate is null)
+            {
+                MessageBox.Show("O certificado não foi selecionado!");
+                return;
+            }
+
+            txtResult.ResetText();
+            txtResult.Text = DigitalCertificateAgent.ConvertToBase64(DigitalCertificateAgent.ConvertToBytes(_certificate, txtPassword.Text));
+        }
+
+        private void btnImportFromBase64String_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented!");
         }
     }
 }
