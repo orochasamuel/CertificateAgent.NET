@@ -135,6 +135,11 @@ namespace CertificateAgent.Core
             return certificate;
         }
 
+        public static bool IsValid(this X509Certificate2 @this)
+        {
+            return Convert.ToDateTime(@this.GetExpirationDateString()) > DateTime.Now;
+        }
+
         public static List<X509Certificate2> ListOnlyValidCerticates(StoreName storeName = StoreName.My,
             StoreLocation storeLocation = StoreLocation.CurrentUser)
         {

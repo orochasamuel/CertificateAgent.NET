@@ -36,13 +36,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpExpirationTime = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBoxResult = new System.Windows.Forms.GroupBox();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.btnExportToBase64String = new System.Windows.Forms.Button();
-            this.btnImportFromBase64String = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnImportFromBase64String = new System.Windows.Forms.Button();
+            this.btnExportToBase64String = new System.Windows.Forms.Button();
+            this.groupBoxResult = new System.Windows.Forms.GroupBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.lblIsValid = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBoxResult.SuspendLayout();
@@ -119,6 +120,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtpExpirationTime);
             this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.lblIsValid);
             this.groupBox1.Controls.Add(this.txtFriendlyName);
             this.groupBox1.Controls.Add(this.txtSerialNumber);
             this.groupBox1.Controls.Add(this.label1);
@@ -131,6 +133,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Certificado";
             // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(369, 81);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(179, 20);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(366, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Senha";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnImportFromBase64String);
@@ -142,6 +161,30 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conversão";
+            // 
+            // btnImportFromBase64String
+            // 
+            this.btnImportFromBase64String.BackColor = System.Drawing.Color.White;
+            this.btnImportFromBase64String.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportFromBase64String.Location = new System.Drawing.Point(6, 50);
+            this.btnImportFromBase64String.Name = "btnImportFromBase64String";
+            this.btnImportFromBase64String.Size = new System.Drawing.Size(150, 25);
+            this.btnImportFromBase64String.TabIndex = 3;
+            this.btnImportFromBase64String.Text = "Importar de Base64String";
+            this.btnImportFromBase64String.UseVisualStyleBackColor = false;
+            this.btnImportFromBase64String.Click += new System.EventHandler(this.btnImportFromBase64String_Click);
+            // 
+            // btnExportToBase64String
+            // 
+            this.btnExportToBase64String.BackColor = System.Drawing.Color.White;
+            this.btnExportToBase64String.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportToBase64String.Location = new System.Drawing.Point(6, 19);
+            this.btnExportToBase64String.Name = "btnExportToBase64String";
+            this.btnExportToBase64String.Size = new System.Drawing.Size(150, 25);
+            this.btnExportToBase64String.TabIndex = 3;
+            this.btnExportToBase64String.Text = "Exportar p/ Base64String";
+            this.btnExportToBase64String.UseVisualStyleBackColor = false;
+            this.btnExportToBase64String.Click += new System.EventHandler(this.btnExportToBase64String_Click);
             // 
             // groupBoxResult
             // 
@@ -166,46 +209,15 @@
             this.txtResult.Size = new System.Drawing.Size(486, 277);
             this.txtResult.TabIndex = 0;
             // 
-            // btnExportToBase64String
+            // lblIsValid
             // 
-            this.btnExportToBase64String.BackColor = System.Drawing.Color.White;
-            this.btnExportToBase64String.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportToBase64String.Location = new System.Drawing.Point(6, 19);
-            this.btnExportToBase64String.Name = "btnExportToBase64String";
-            this.btnExportToBase64String.Size = new System.Drawing.Size(150, 25);
-            this.btnExportToBase64String.TabIndex = 3;
-            this.btnExportToBase64String.Text = "Exportar p/ Base64String";
-            this.btnExportToBase64String.UseVisualStyleBackColor = false;
-            this.btnExportToBase64String.Click += new System.EventHandler(this.btnExportToBase64String_Click);
-            // 
-            // btnImportFromBase64String
-            // 
-            this.btnImportFromBase64String.BackColor = System.Drawing.Color.White;
-            this.btnImportFromBase64String.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportFromBase64String.Location = new System.Drawing.Point(6, 50);
-            this.btnImportFromBase64String.Name = "btnImportFromBase64String";
-            this.btnImportFromBase64String.Size = new System.Drawing.Size(150, 25);
-            this.btnImportFromBase64String.TabIndex = 3;
-            this.btnImportFromBase64String.Text = "Importar de Base64String";
-            this.btnImportFromBase64String.UseVisualStyleBackColor = false;
-            this.btnImportFromBase64String.Click += new System.EventHandler(this.btnImportFromBase64String_Click);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(369, 81);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(179, 20);
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(366, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Senha";
+            this.lblIsValid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIsValid.AutoSize = true;
+            this.lblIsValid.Location = new System.Drawing.Point(498, 16);
+            this.lblIsValid.Name = "lblIsValid";
+            this.lblIsValid.Size = new System.Drawing.Size(47, 13);
+            this.lblIsValid.TabIndex = 2;
+            this.lblIsValid.Text = "Is Valid?";
             // 
             // frmMain
             // 
@@ -246,5 +258,6 @@
         private System.Windows.Forms.Button btnImportFromBase64String;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIsValid;
     }
 }

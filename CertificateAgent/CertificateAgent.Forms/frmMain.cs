@@ -26,6 +26,7 @@ namespace CertificateAgent.Forms
             txtSerialNumber.Text = certificate.GetSerialNumberString();
             dtpExpirationTime.Value = Convert.ToDateTime(certificate.GetExpirationDateString());
             txtFriendlyName.Text = certificate.FriendlyName;
+            lblIsValid.Text = DigitalCertificateAgent.IsValid(certificate) ? "VÁLIDO" : "INVÁLIDO";
         }
 
         private void btnChooseCertificate_Click(object sender, EventArgs e)
